@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   {% load static %}
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>create</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="{% static 'assets/home_css/home.css' %}">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+
+      <a href="home.html" class="logo">Educa.</a>
+
+      {% comment %} <form action="search.html" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form> {% endcomment %}
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         {% comment %} <div id="search-btn" class="fas fa-search"></div> {% endcomment %}
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="{{ profile_pic_url }}" alt="Profile Picture" class="profile-pic-1">         
+         <h3 class="name">{{ username }}</h3>
+         <p class="role">{{ first }} {{ last }}</p>
+         <a href="profile" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="logout_user" class="option-btn">logout</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="{{ profile_pic_url }}" alt="Profile Picture" class="profile-pic-1"> 
+      <h3 class="name">{{ username }}</h3>
+      <p class="role">{{ first }} {{ last }}</p>
+      <a href="profile" class="btn">view profile</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="home"><i class="fas fa-home"></i><span> Home</span></a>
+      {% comment %} <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>courses</span></a> {% endcomment %}
+      <a href="create"><i class="fas fa-chalkboard-user"></i><span>Create</span></a>
+      <a href="about"><i class="fas fa-question"></i><span> About</span></a>
+      <a href="contact"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+   </nav>
+
+</div>
+
+
+
+   <section class="form-container">
+      
+      <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+         <h3>Create VC</h3>
+     
+         <!-- VC Title -->
+         <p>VC Title:</p>
+         <div>
+             <input type="text" id="title" name="title" placeholder="Enter VC Title" required class="box">
+         </div>
+     
+         <!-- Start Time -->
+         <p>Start Time:</p>
+         <div>
+             <input type="datetime-local" id="start_time" name="start_time" required class="box">
+         </div>
+     
+         <!-- Category -->
+         <p>Category:</p>
+         <div>
+             <select id="category" name="category" required class="box">
+                 <option value="Video Editing">Video Editing</option>
+                 <option value="Graphic Designer">Graphic Designer</option>
+                 <option value="SEO">SEO</option>
+                 <option value="Cinematography">Cinematography</option>
+                 <option value="Full Stack Development">Full Stack Development</option>
+                 <option value="Front End Development">Front End Development</option>
+                 <option value="Back End Development">Back End Development</option>
+                 <option value="3D Artist">3D Artist</option>
+                 <option value="Affiliate Marketing">Affiliate Marketing</option>
+                 <option value="Data Analytics">Data Analytics</option>
+                 <option value="Content Writing">Content Writing</option>
+                 <option value="Digital Marketing">Digital Marketing</option>
+                 <option value="UI/UX Design">UI/UX Design</option>
+                 <!-- Add more options as needed -->
+             </select>
+         </div>
+     
+         <!-- Thumbnail -->
+         <p>Thumbnail:</p>
+         <div>
+             <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="box">
+         </div>
+     
+         <!-- Submit Button -->
+         <button class="btn" type="submit">Create VC</button>
+     </form>
+     
+
+{% comment %} <footer class="footer">
+
+</footer> {% endcomment %}
+
+<!-- custom js file link  -->
+<script src="{% static 'assets/home_js/script.js' %}"></script>
+
+   
+</body>
+</html>
