@@ -584,6 +584,10 @@ section{
    position: relative;
 }
 
+.logo > img{
+   height: 6rem;
+   width: 10rem;
+}
 /* thumbnail */
 .box {
    display: flex;
